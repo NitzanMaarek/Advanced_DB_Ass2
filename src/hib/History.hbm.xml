@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 17, 2019 6:40:37 PM by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+ <class lazy="true" name="hib.History" table="HISTORY">
+  <composite-id class="hib.HistoryId" mapped="false" name="id" unsaved-value="undefined">
+   <key-property name="userid" type="int">
+    <column name="USERID" precision="9" scale="0"/>
+   </key-property>
+   <key-property name="mid" type="int">
+    <column name="MID" precision="9" scale="0"/>
+   </key-property>
+   <key-property name="viewtime" type="timestamp">
+    <column name="VIEWTIME"/>
+   </key-property>
+  </composite-id>
+  <many-to-one class="hib.Mediaitems" fetch="select" insert="false"
+   name="mediaitems" update="false">
+   <column name="MID" not-null="true" precision="9" scale="0"/>
+  </many-to-one>
+  <many-to-one class="hib.Users" fetch="select" insert="false"
+   name="users" update="false">
+   <column name="USERID" not-null="true" precision="9" scale="0"/>
+  </many-to-one>
+ </class>
+</hibernate-mapping>
