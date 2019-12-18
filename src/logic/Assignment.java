@@ -98,6 +98,33 @@ public class Assignment {
 //		System.out.println("******************************************************************* \r \n \r \n");
 //		// *******************************************************************				
 		
+		// ******************** Testing insertToHistory() ********************
+		System.out.println("******************** Testing insertToHistory() ********************");
+		System.out.println("Input is: 100, 100");
+		System.out.println("Output: ");
+		insertToHistory(100, 100);
+		System.out.println("Output should be: USER DOES NOT EXIST");
+		System.out.println("******************************************************************* \r \n \r \n");
+		// *******************************************************************				
+				
+		// ******************** Testing insertToHistory() ********************
+		System.out.println("******************** Testing insertToHistory() ********************");
+		System.out.println("Input is: aviv101, 100");
+		System.out.println("Output: ");
+		insertToHistory("aviv101", "Christ");
+		System.out.println("Output should be: MEDIAITEM DOES NOT EXIST");
+		System.out.println("******************************************************************* \r \n \r \n");
+		// *******************************************************************		
+		
+		// ******************** Testing insertToHistory() ********************
+		System.out.println("******************** Testing insertToHistory() ********************");
+		System.out.println("Input is: aviv101, Pulp Fiction");
+		System.out.println("Output: ");
+		insertToHistory("aviv101", "Fiction");
+		System.out.println("Output should be: The insertion to history table was successful <timestamp>");
+		System.out.println("******************************************************************* \r \n \r \n");
+		// *******************************************************************		
+		
 //		// ********************** Insertion of an admin *************		
 //		try {
 //			Session session = HibernateUtil.currentSession();
@@ -249,20 +276,24 @@ public class Assignment {
 			Session session = HibernateUtil.currentSession();
 			Transaction tx = session.beginTransaction();
 			History historyNew = new History();
-			Users user = (Users)session.get(Users.class, userid);
+			Users user = (Users)session.get(Users.class, Integer.parseInt(userid));
 			if(user == null) {
 				throw new Exception("USER DOES NOT EXIST.");
 			}
 			
-			Mediaitems mediaitem = (Mediaitems)session.get(Mediaitems.class, mid);
+			Mediaitems mediaitem = (Mediaitems)session.get(Mediaitems.class, Integer.parseInt(mid));
 			if(mediaitem == null) {
 				throw new Exception("MEDIAITEM DOES NOT EXIST.");
 			}
-			HistoryId historyId = new HistoryId(user.getUserid(), mediaitem.getMid(), new Timestamp(System.currentTimeMillis()));
-				
+			Timestamp insertionTime = new Timestamp(System.currentTimeMillis());
+			HistoryId historyIdObject = new HistoryId(user.getUserid(), mediaitem.getMid(), insertionTime);
+			historyNew.setId(historyIdObject);
+			historyNew.setUsers(user);
+			historyNew.setMediaitems(mediaitem);
 			
-			
-
+			Integer historyId = (Integer) session.save(historyNew);		
+			tx.commit();
+			System.out.println("The insertion to history table was successful" + insertionTime.toString());
 		}
 		catch(Exception e) {
 			e.printStackTrace();
