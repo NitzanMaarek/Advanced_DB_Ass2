@@ -1,4 +1,5 @@
 package logic;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import hib.Mediaitems;
@@ -14,16 +15,90 @@ import hib.LoginlogId;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Assignment {
 	
 	public static void main(String[] args) {
 		
+//		// ******************** Testing isExistUsername() ********************
+//		System.out.println("******************** Testing isExistUsername() ********************");
+//		System.out.println("Input is: Jesus");
+//		System.out.println("Output: " + isExistUsername("Jesus"));
+//		System.out.println("Output should be: false");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************
+//		
 //		// ******************** Testing insertUser() ********************
 //		System.out.println("******************** Testing insertUser() ********************");
 //		System.out.println("Input is: aviv101 = username, 123456 = password,   Aviv = first_name,   Zuckerman = last_name,   1 = day_of_birth,   1 = month_of_birth,   1992 = year_of_birth");
 //		System.out.println("Output: " + insertUser("aviv101", "123456", "Aviv", "Zuckerman", "1", "1", "1992"));
+//		System.out.println("Output should be: false");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************
+//			
+//		
+//		// ******************** Testing getTopNItems() ********************
+//		System.out.println("******************** Testing isExistUsername() ********************");
+//		System.out.println("Input is: 10");
+//		System.out.println("Output: ");
+//		List<Mediaitems> mediaitems = getTopNItems(10);
+//		for(Mediaitems mi : mediaitems) {
+//			System.out.println(mi.getMid() + " : " + mi.getTitle());
+//		}
+//		System.out.println("Output should be \r\n 32 : WALLE\r\n" + 
+//				"31 : Se7en\r\n" + 
+//				"30 : It's a Wonderful Life\r\n" + 
+//				"29 : The Lord of the Rings: The Two Towers\r\n" + 
+//				"28 : The Matrix\r\n" + 
+//				"27 : Citizen Kane\r\n" + 
+//				"26 : Memento\r\n" + 
+//				"25 : North by Northwest\r\n" + 
+//				"24 : Sunset Blvd.\r\n" + 
+//				"23 : Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************
+
+//		insertToLog("1");
+//		
+//		// ******************** Testing getNumberOfRegistredUsers() ********************
+//		System.out.println("******************** Testing getNumberOfRegistredUsers() - TEST 1 ********************");
+//		System.out.println("Output: ");
+//		Integer numOfUsers = getNumberOfRegistredUsers(0);
+//		System.out.println("Output: " + numOfUsers.toString());
+//		System.out.println("Output should be: 0");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		
+//		System.out.println("******************** Testing getNumberOfRegistredUsers() - TEST 2 ********************");
+//		System.out.println("Output: ");
+//		numOfUsers = getNumberOfRegistredUsers(100000);
+//		System.out.println("Output: " + numOfUsers.toString());
+//		System.out.println("Output should be: 1");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		
+//		// *******************************************************************
+//		
+//		
+//		// ******************** Testing getUsers() ********************
+//		System.out.println("******************** Testing getUsers() ********************");
+//		System.out.println("Output: ");
+//		List<Users> users = getUsers();
+//		for (Users user : users) {
+//			System.out.println(user.getUserid());
+//		}
+//		
+//		System.out.println("Output should be: 1");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************
+//		
+//		// ******************** Testing getUser() ********************
+//		System.out.println("******************** Testing getUser() ********************");
+//		System.out.println("Input is: 1");
+//		System.out.println("Output: " + getUser("1").getUsername());
+//		System.out.println("Output should be: aviv101");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************
 //		System.out.println("Output should be: 1");
 //		System.out.println("******************************************************************* \r \n \r \n");
 //		// *******************************************************************
@@ -97,33 +172,33 @@ public class Assignment {
 //		System.out.println("Output should be: Not Found");
 //		System.out.println("******************************************************************* \r \n \r \n");
 //		// *******************************************************************				
-		
-		// ******************** Testing insertToHistory() ********************
-		System.out.println("******************** Testing insertToHistory() ********************");
-		System.out.println("Input is: 100, 100");
-		System.out.println("Output: ");
-		insertToHistory(100, 100);
-		System.out.println("Output should be: USER DOES NOT EXIST");
-		System.out.println("******************************************************************* \r \n \r \n");
-		// *******************************************************************				
-				
-		// ******************** Testing insertToHistory() ********************
-		System.out.println("******************** Testing insertToHistory() ********************");
-		System.out.println("Input is: aviv101, 100");
-		System.out.println("Output: ");
-		insertToHistory("aviv101", "Christ");
-		System.out.println("Output should be: MEDIAITEM DOES NOT EXIST");
-		System.out.println("******************************************************************* \r \n \r \n");
-		// *******************************************************************		
-		
-		// ******************** Testing insertToHistory() ********************
-		System.out.println("******************** Testing insertToHistory() ********************");
-		System.out.println("Input is: aviv101, Pulp Fiction");
-		System.out.println("Output: ");
-		insertToHistory("aviv101", "Fiction");
-		System.out.println("Output should be: The insertion to history table was successful <timestamp>");
-		System.out.println("******************************************************************* \r \n \r \n");
-		// *******************************************************************		
+//		
+//		// ******************** Testing insertToHistory() ********************
+//		System.out.println("******************** Testing insertToHistory() ********************");
+//		System.out.println("Input is: 100, 100");
+//		System.out.println("Output: ");
+//		insertToHistory("100", "100");
+//		System.out.println("Output should be: USER DOES NOT EXIST");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************				
+//				
+//		// ******************** Testing insertToHistory() ********************
+//		System.out.println("******************** Testing insertToHistory() ********************");
+//		System.out.println("Input is: aviv101, 100");
+//		System.out.println("Output: ");
+//		insertToHistory("1", "100");
+//		System.out.println("Output should be: MEDIAITEM DOES NOT EXIST");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************		
+//		
+//		// ******************** Testing insertToHistory() ********************
+//		System.out.println("******************** Testing insertToHistory() ********************");
+//		System.out.println("Input is: aviv101, Pulp Fiction");
+//		System.out.println("Output: ");
+//		insertToHistory("1", "4");
+//		System.out.println("Output should be: The insertion to history table was successful <timestamp>");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************		
 		
 //		// ********************** Insertion of an admin *************		
 //		try {
@@ -144,25 +219,25 @@ public class Assignment {
 //		}
 	}
 	
-//	public static void test() {
-//		try {
-//			Session session = HibernateUtil.currentSession();
-//			String hqlQuery = "select MI from Mediaitems MI";
-//			@SuppressWarnings("unchecked")
-//			List<Mediaitems> items = session.createQuery(hqlQuery).list();
-//			for(Mediaitems mi:items) {
-//				System.out.println(mi.getTitle());
-//			}
-//			System.out.println(items.size());
-//
-//		}
-//		catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		finally {
-//			HibernateUtil.closeSession();
-//		}
-//	}
+	public static void test() {
+		try {
+			Session session = HibernateUtil.currentSession();
+			String hqlQuery = "select MI from Mediaitems MI";
+			@SuppressWarnings("unchecked")
+			List<Mediaitems> items = session.createQuery(hqlQuery).list();
+			for(Mediaitems mi:items) {
+				System.out.println(mi.getTitle());
+			}
+			System.out.println(items.size());
+
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			HibernateUtil.closeSession();
+		}
+	}
 	
 	public static boolean isExistUsername(String username) {
 		try {
@@ -290,10 +365,9 @@ public class Assignment {
 			historyNew.setId(historyIdObject);
 			historyNew.setUsers(user);
 			historyNew.setMediaitems(mediaitem);
-			
-			Integer historyId = (Integer) session.save(historyNew);		
+			session.saveOrUpdate(historyNew);
 			tx.commit();
-			System.out.println("The insertion to history table was successful" + insertionTime.toString());
+			System.out.println("The insertion to history table was successful " + insertionTime.toString());
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -310,22 +384,51 @@ public class Assignment {
 	}
 	
 	public static void insertToLog(String userid) {
-		
+		if(!isExistUsername(userid)) {
+			try {
+				Session session = HibernateUtil.currentSession();
+				Transaction tx = session.beginTransaction();
+//				DateFormat format = new SimpleDateFormat("dd-MM-yyy", Locale.ENGLISH);
+				Timestamp date = new Timestamp(System.currentTimeMillis());
+//				Date date = java.sql.Date.valueOf(LocalDate.now());
+				LoginlogId log = new LoginlogId();
+				log.setLogintime(date);
+				log.setUserid(Integer.parseInt(userid));
+				tx.commit();
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			finally {
+				HibernateUtil.closeSession();
+			}
+		}
 	}
 	
 	public static int getNumberOfRegistredUsers(int n) {
 		int ans = 0;
+		Session session = HibernateUtil.currentSession();
+		Date date = java.sql.Date.valueOf(LocalDate.now().minusDays(n));
+		Query q = session.createQuery("select user FROM Users user where user.registrationDate > :date");
+		q.setDate("date", date);
+		ans = q.list().size();
 		return ans;
 	}
 	
+	
 	public static List<Users> getUsers(){
-		List<Users> users = new ArrayList<>();
+		Session session = HibernateUtil.currentSession();
+		String hqlQuery = "FROM Users user";
+		@SuppressWarnings("unchecked")
+		List<Users> users = session.createQuery(hqlQuery).list();
 		return users;
 	}
 
 	public static Users getUser(String userid) {
-		return null; 
+		Session session = HibernateUtil.currentSession();
+		@SuppressWarnings("unchecked")
+		Users user = (Users)session.get(Users.class,  Integer.parseInt(userid));
+		return user;
 	}
-	
 	
 }
