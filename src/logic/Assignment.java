@@ -22,6 +22,7 @@ public class Assignment {
 	
 	public static void main(String[] args) {
 		
+<<<<<<< HEAD
 //		// ******************** Testing isExistUsername() ********************
 //		System.out.println("******************** Testing isExistUsername() ********************");
 //		System.out.println("Input is: Jesus");
@@ -30,10 +31,13 @@ public class Assignment {
 //		System.out.println("******************************************************************* \r \n \r \n");
 //		// *******************************************************************
 //		
+=======
+>>>>>>> a88f06f060fa0f28aa4555e685b8b104fcc85340
 //		// ******************** Testing insertUser() ********************
 //		System.out.println("******************** Testing insertUser() ********************");
 //		System.out.println("Input is: aviv101 = username, 123456 = password,   Aviv = first_name,   Zuckerman = last_name,   1 = day_of_birth,   1 = month_of_birth,   1992 = year_of_birth");
 //		System.out.println("Output: " + insertUser("aviv101", "123456", "Aviv", "Zuckerman", "1", "1", "1992"));
+<<<<<<< HEAD
 //		System.out.println("Output should be: false");
 //		System.out.println("******************************************************************* \r \n \r \n");
 //		// *******************************************************************
@@ -99,6 +103,99 @@ public class Assignment {
 		System.out.println("Output should be: aviv101");
 		System.out.println("******************************************************************* \r \n \r \n");
 		// *******************************************************************
+=======
+//		System.out.println("Output should be: 1");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************
+//		
+//		// ******************** Testing isExistUsername() ********************
+//		System.out.println("******************** Testing isExistUsername() ********************");
+//		System.out.println("Input is: Jesus");
+//		System.out.println("Output: " + isExistUsername("Jesus"));
+//		System.out.println("Output should be: false");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************
+//		
+//		// ******************** Testing isExistUsername() ********************
+//		System.out.println("******************** Testing isExistUsername() ********************");
+//		System.out.println("Input is: aviv101");
+//		System.out.println("Output: " + isExistUsername("aviv101"));
+//		System.out.println("Output should be: true");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************		
+
+//		// ******************** Testing validateUser() ********************
+//		System.out.println("******************** Testing validateUser() ********************");
+//		System.out.println("Input is: aviv101, 123456");
+//		System.out.println("Output: " + validateUser("aviv101", "123456"));
+//		System.out.println("Output should be: 1");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************			
+//
+//		// ******************** Testing validateUser() ********************
+//		System.out.println("******************** Testing validateUser() ********************");
+//		System.out.println("Input is: Jesus, Christ");
+//		System.out.println("Output: " + validateUser("Jesus", "Christ"));
+//		System.out.println("Output should be: Not Found");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************				
+		
+//		// ******************** Testing getTopNItems() ********************
+//		System.out.println("******************** Testing isExistUsername() ********************");
+//		System.out.println("Input is: 10");
+//		System.out.println("Output: ");
+//		List<Mediaitems> mediaitems = getTopNItems(10);
+//		for(Mediaitems mi : mediaitems) {
+//			System.out.println(mi.getMid() + " : " + mi.getTitle());
+//		}
+//		System.out.println("Output should be \r\n 32 : WALLE\r\n" + 
+//				"31 : Se7en\r\n" + 
+//				"30 : It's a Wonderful Life\r\n" + 
+//				"29 : The Lord of the Rings: The Two Towers\r\n" + 
+//				"28 : The Matrix\r\n" + 
+//				"27 : Citizen Kane\r\n" + 
+//				"26 : Memento\r\n" + 
+//				"25 : North by Northwest\r\n" + 
+//				"24 : Sunset Blvd.\r\n" + 
+//				"23 : Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************
+		
+		
+//		// ******************** Testing validateAdministrator() ********************
+//		System.out.println("******************** Testing validateAdministrator() ********************");
+//		System.out.println("Input is: Master, Plaster");
+//		System.out.println("Output: " + validateAdministrator("Master", "Plaster"));
+//		System.out.println("Output should be: 0");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************				
+//	
+//		// ******************** Testing validateAdministrator() ********************
+//		System.out.println("******************** Testing validateAdministrator() ********************");
+//		System.out.println("Input is: Jesus, Christ");
+//		System.out.println("Output: " + validateAdministrator("Jesus", "Christ"));
+//		System.out.println("Output should be: Not Found");
+//		System.out.println("******************************************************************* \r \n \r \n");
+//		// *******************************************************************				
+		
+//		// ********************** Insertion of an admin *************		
+//		try {
+//			Session session = HibernateUtil.currentSession();
+//			Transaction tx = session.beginTransaction();
+//			Administrators adminNew = new Administrators();
+//			adminNew.setUsername("Master");
+//			adminNew.setPassword("Plaster");	
+//			Integer adminId = (Integer) session.save(adminNew);
+//			tx.commit();
+//			System.out.println("Admin inserted successfuully.");
+//		}
+//		catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		finally {
+//			HibernateUtil.closeSession();
+//		}
+>>>>>>> a88f06f060fa0f28aa4555e685b8b104fcc85340
 	}
 	
 	public static void test() {
@@ -174,7 +271,6 @@ public class Assignment {
 	public static List<Mediaitems> getTopNItems(int top_n){
 		try {
 			Session session = HibernateUtil.currentSession();
-//			String hqlQuery = "SELECT MI FROM Mediaitems MI ORDER BY MID.mid desc";
 			String hqlQuery = "FROM Mediaitems MI ORDER BY MI.mid DESC";
 			@SuppressWarnings("unchecked")
 			List<Mediaitems> items = session.createQuery(hqlQuery).setMaxResults(top_n).list();
@@ -190,13 +286,20 @@ public class Assignment {
 	}
 	
 	public static String validateUser(String username, String password) {
-		String ans = null;
+		String ans = "Not Found";
 		try {
 			Session session = HibernateUtil.currentSession();
+<<<<<<< HEAD
 			String hqlQuery = "SELECT USER FROM Users USER WHERE USER.username = '"+ username+"' AND USER.password = '"+password+"'";
 			@SuppressWarnings("unchecked")
 			Users user = (Users)session.createQuery(hqlQuery).list().get(0);
 			return Integer.toString(user.getUserid());
+=======
+			String hqlQuery = "FROM Users US WHERE US.username = '"+username+"' AND US.password = '"+password+"'";
+			@SuppressWarnings("unchecked")
+			List<Users> users = session.createQuery(hqlQuery).list();
+			return (users.size() > 0) ? Integer.toString(users.get(0).getUserid()) : "Not Found";
+>>>>>>> a88f06f060fa0f28aa4555e685b8b104fcc85340
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -208,11 +311,53 @@ public class Assignment {
 	}
 	
 	public static String validateAdministrator(String username, String password) {
-		String ans = "";
+		String ans = "Not Found";
+		try {
+			Session session = HibernateUtil.currentSession();
+			String hqlQuery = "FROM Administrators AD WHERE AD.username = '"+username+"' AND AD.password = '"+password+"'";
+			@SuppressWarnings("unchecked")
+			List<Administrators> admins = session.createQuery(hqlQuery).list();
+			return (admins.size() > 0) ? Integer.toString(admins.get(0).getAdminid()) : "Not Found";
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			HibernateUtil.closeSession();
+		}
 		return ans;
 	}
 	
 	public static void insertToHistory(String userid, String mid) {
+		/*
+		 * 	The function insert the row to the History table with current server time.
+			Print “The insertion to history table was successful <server time>“.
+		 */
+		try {
+			Session session = HibernateUtil.currentSession();
+			Transaction tx = session.beginTransaction();
+			History historyNew = new History();
+			Users user = (Users)session.get(Users.class, userid);
+			if(user == null) {
+				throw new Exception("USER DOES NOT EXIST.");
+			}
+			
+			Mediaitems mediaitem = (Mediaitems)session.get(Mediaitems.class, mid);
+			if(mediaitem == null) {
+				throw new Exception("MEDIAITEM DOES NOT EXIST.");
+			}
+			HistoryId historyId = new HistoryId(user.getUserid(), mediaitem.getMid(), new Timestamp(System.currentTimeMillis()));
+				
+			
+			
+
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			HibernateUtil.closeSession();
+		}
 		
 	}
 	
