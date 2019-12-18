@@ -18,28 +18,29 @@ import java.util.*;
 public class Assignment {
 	
 	public static void main(String[] args) {
+		test();
 
 	}
 	
-//	public static void test() {
-//		try {
-//			Session session = HibernateUtil.currentSession();
-//			String hqlQuery = "select MI from Mediaitems MI";
-//			@SuppressWarnings("unchecked")
-//			List<Mediaitems> items = session.createQuery(hqlQuery).list();
-//			for(Mediaitems mi:items) {
-//				System.out.println(mi.getTitle());
-//			}
-//			System.out.println(items.size());
-//
-//		}
-//		catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		finally {
-//			HibernateUtil.closeSession();
-//		}
-//	}
+	public static void test() {
+		try {
+			Session session = HibernateUtil.currentSession();
+			String hqlQuery = "select MI from Mediaitems MI";
+			@SuppressWarnings("unchecked")
+			List<Mediaitems> items = session.createQuery(hqlQuery).list();
+			for(Mediaitems mi:items) {
+				System.out.println(mi.getTitle());
+			}
+			System.out.println(items.size());
+
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			HibernateUtil.closeSession();
+		}
+	}
 	
 	public static boolean isExistUsername(String username) {
 		try {
